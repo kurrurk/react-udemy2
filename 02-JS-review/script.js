@@ -169,9 +169,19 @@ const updatedBook = {
 };
 updatedBook;
 
-const summary = `${title}, a ${pages}-page long book, was written by ${author} and publisched in ${
-  publicationDate.split("-")[0]
-}. The book has${hasMovieAdaptation ? "" : " not"} been adapted as a movie`;
+function getYear(date) {
+  return date.split("-")[0];
+}
+
+const getArrowYear = (date) => date.split("-")[0];
+
+console.log(getYear(publicationDate));
+
+console.log(getArrowYear(getBook(1).publicationDate));
+
+const summary = `${title}, a ${pages}-page long book, was written by ${author} and publisched in ${getArrowYear(
+  publicationDate,
+)}. The book has${hasMovieAdaptation ? "" : " not"} been adapted as a movie`;
 summary;
 
 const pagesRange = pages > 1000 ? "over a thosand" : "less then 1000";
