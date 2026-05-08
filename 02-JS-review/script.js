@@ -143,7 +143,7 @@ function getBook(id) {
   return data.find((d) => d.id === id);
 }
 
-const book = getBook(2);
+const book = getBook(3);
 book;
 
 const {
@@ -205,9 +205,16 @@ console.log(false || "Some string");
 const spanishTranslation = book.translations.spanish || "NOT TRANSLATED";
 spanishTranslation;
 
-console.log(book.reviews.librarything.reviewsCount);
-const countWrong = book.reviews.librarything.reviewsCount || "no data";
-countWrong;
+// console.log(book.reviews.librarything.reviewsCount);
+// const countWrong = book.reviews.librarything.reviewsCount || "no data";
+// countWrong;
 
-const countRight = book.reviews.librarything.reviewsCount ?? "no data";
-countRight;
+// const countRight = book.reviews.librarything.reviewsCount ?? "no data";
+// countRight;
+
+function getTotalReviewCount(book) {
+  const goodRead = book.reviews.goodreads?.reviewsCount ?? 0;
+  const libraryThing = book.reviews.librarything?.reviewsCount ?? 0;
+  return goodRead + libraryThing;
+}
+console.log(getTotalReviewCount(book));
