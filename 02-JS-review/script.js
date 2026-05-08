@@ -146,8 +146,15 @@ function getBook(id) {
 const book = getBook(2);
 book;
 
-const { title, author, pages, publicationDate, genres, hasMovieAdaptation } =
-  book;
+const {
+  title,
+  author,
+  pages,
+  publicationDate,
+  genres,
+  hasMovieAdaptation,
+  translations,
+} = book;
 
 console.log(title, author, pages, publicationDate, genres, hasMovieAdaptation);
 
@@ -177,7 +184,7 @@ const getArrowYear = (date) => date.split("-")[0];
 
 console.log(getYear(publicationDate));
 
-console.log(getArrowYear(getBook(1).publicationDate));
+console.log(getArrowYear(getBook(5).publicationDate));
 
 const summary = `${title}, a ${pages}-page long book, was written by ${author} and publisched in ${getArrowYear(
   publicationDate,
@@ -187,3 +194,20 @@ summary;
 const pagesRange = pages > 1000 ? "over a thosand" : "less then 1000";
 pagesRange;
 console.log(`The book has ${pagesRange} pages`);
+
+console.log(true && "Some string");
+console.log(false && "Some string");
+console.log(hasMovieAdaptation && "This Book has a movie");
+
+console.log(true || "Some string");
+console.log(false || "Some string");
+
+const spanishTranslation = book.translations.spanish || "NOT TRANSLATED";
+spanishTranslation;
+
+console.log(book.reviews.librarything.reviewsCount);
+const countWrong = book.reviews.librarything.reviewsCount || "no data";
+countWrong;
+
+const countRight = book.reviews.librarything.reviewsCount ?? "no data";
+countRight;
